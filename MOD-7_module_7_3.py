@@ -27,15 +27,16 @@ class WordsFinder:
         return None
 
 
-    # def count(self, word):
-    #     counts = {}
-    #     all_words = self.get_all_words()
-    #     for file_name, words in all_words.items():
-    #         counts[file_name] = words.count(word)
-    #     return counts
+    def count(self, word):
+        counts = {}
+        word = word.lower()
+        for name, words in self.get_all_words().items():
+            if word.lower() in words:
+                counts[name] = words.count(word)
 
+        return counts
 
 finder2 = WordsFinder('test_file.txt')
 print(finder2.get_all_words())
 print(finder2.find('TEXT'))  # 3 слово по счёту
-# print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
+print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
